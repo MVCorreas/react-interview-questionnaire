@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { reactQuestions } from "../lib/questions";
 import Card from "./Card";
+import Button from "./Button"
 
 export default function Cards() {
   const [current, setCurrent] = useState(0);
@@ -19,9 +20,12 @@ export default function Cards() {
         selected={selected}
         onSelect={(idx) => setSelected(idx)}
       />
-      <button onClick={handleNext} disabled={current === 2 ? true : false}>
-        NEXT
-      </button>
+
+      <Button
+      className="mb-2" 
+      onClick={handleNext}
+      disabled={current === 2 ? true : false}
+      text={'NEXT'}/>
     </>
   );
 }
