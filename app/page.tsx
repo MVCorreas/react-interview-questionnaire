@@ -1,5 +1,5 @@
 "use client";
-import Card from "./components/Card";
+import Cards from "./components/Cards";
 import Timer from "./components/Timer";
 import Header from "./components/Header";
 
@@ -10,7 +10,7 @@ export default function Home() {
         <Header />
         <section className="rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/70">
           <div className="space-y-6">
-            <Card />
+            <Cards />
             <div className="flex justify-center">
               <Timer />
             </div>
