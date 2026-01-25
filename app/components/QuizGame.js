@@ -43,25 +43,33 @@ export default function QuizGame({ onClose }) {
         </button>
       </div>
       <div className="space-y-6">
-        <Card
-          question={question}
-          selected={selected}
-          onSelect={handleSelect}
-          disabled={current === reactQuestions.length - 1}
-        />
-        {current < reactQuestions.length - 1 && (
-          <Button
-            className="mb-2"
-            onClick={handleNext}
-            disabled={current === 2 ? true : false}
-            text={"NEXT"}
-          />
-        )}
+        {current < reactQuestions.length - 1 ? (
+          <>
+            <Card
+              question={question}
+              selected={selected}
+              onSelect={handleSelect}
+              disabled={current === reactQuestions.length - 1}
+            />
 
-        <div className="flex justify-center">
-          <Timer key={current} />
-        </div>
-        <ScoreBoard score={score} setScore={setScore} />
+            <Button
+              className="mb-2"
+              onClick={handleNext}
+              disabled={current === 2 ? true : false}
+              text={"NEXT"}
+            />
+
+            <div className="flex justify-center">
+              <Timer key={current} />
+            </div>
+            <ScoreBoard score={score} setScore={setScore} />
+          </>
+        ) : (
+          <div className="text-center p-4 bg-green-100 rounded-lg">
+            <p className="font-semibold text-green-800">Quiz Complete!</p>
+            <p className="text-green-700">Final Score: {score}</p>
+          </div>
+        )}
       </div>
     </section>
   );
