@@ -14,6 +14,10 @@ export default function QuizGame({ onClose }) {
   const question = reactQuestions[current];
 
   const handleSelect = (idx) => {
+    if (current === reactQuestions.length - 1) {
+      return;
+    }
+
     if (idx === question.answerIndex) {
       setScore(score + 10);
     }
@@ -21,11 +25,6 @@ export default function QuizGame({ onClose }) {
     if (current < reactQuestions.length - 1) {
       setCurrent(current + 1);
       setSelected(null);
-    } else {
-      console.log(
-        "Quiz complete! Final score:",
-        score + (idx === question.answerIndex ? 10 : 0),
-      );
     }
   };
 
@@ -44,7 +43,12 @@ export default function QuizGame({ onClose }) {
         </button>
       </div>
       <div className="space-y-6">
-        <Card question={question} selected={selected} onSelect={handleSelect} />
+        <Card
+          question={question}
+          selected={selected}
+          onSelect={handleSelect}
+          disabled={current === reactQuestions.length - 1}
+        />
         <Button
           className="mb-2"
           onClick={handleNext}
