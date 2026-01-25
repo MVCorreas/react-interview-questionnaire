@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { reactQuestions } from "../lib/questions";
 import Card from "./Card";
 import Timer from "./Timer";
@@ -14,12 +14,21 @@ export default function QuizGame({ onClose }) {
   const question = reactQuestions[current];
 
   const handleSelect = (idx) => {
-    setSelected(idx);
-    // TODO: validate answer, calculate points based on timer, advance to next
     if (idx === question.answerIndex) {
-      setScore(10);
+      setScore(score + 10);
+    }
+
+    if (current < reactQuestions.length - 1) {
+      setCurrent(current + 1);
+      setSelected(null);
+    } else {
+      console.log(
+        "Quiz complete! Final score:",
+        score + (idx === question.answerIndex ? 10 : 0),
+      );
     }
   };
+
   const handleNext = () => {
     if (current < reactQuestions.length - 1) {
       setCurrent(current + 1);
