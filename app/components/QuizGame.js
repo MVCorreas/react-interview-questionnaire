@@ -49,12 +49,15 @@ export default function QuizGame({ onClose }) {
           onSelect={handleSelect}
           disabled={current === reactQuestions.length - 1}
         />
-        <Button
-          className="mb-2"
-          onClick={handleNext}
-          disabled={current === 2 ? true : false}
-          text={"NEXT"}
-        />
+        {current < reactQuestions.length - 1 && (
+          <Button
+            className="mb-2"
+            onClick={handleNext}
+            disabled={current === 2 ? true : false}
+            text={"NEXT"}
+          />
+        )}
+
         <div className="flex justify-center">
           <Timer key={current} />
         </div>
