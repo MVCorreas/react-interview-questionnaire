@@ -1,4 +1,4 @@
-export default function ScoreBoard({ score, setScore }) {
+export default function ScoreBoard({ score }) {
   return (
     <div className=" w-full bg-gray-200 rounded-full h-4">
       <div

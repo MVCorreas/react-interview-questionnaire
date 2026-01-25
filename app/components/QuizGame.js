@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { reactQuestions } from "../lib/questions";
 import Card from "./Card";
 import Timer from "./Timer";
