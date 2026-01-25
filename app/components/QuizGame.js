@@ -4,6 +4,7 @@ import { reactQuestions } from "../lib/questions";
 import Card from "./Card";
 import Timer from "./Timer";
 import Button from "./Button";
+import ScoreBoard from "./ScoreBoard";
 
 export default function QuizGame({ onClose }) {
   const [current, setCurrent] = useState(0);
@@ -15,9 +16,15 @@ export default function QuizGame({ onClose }) {
   const handleSelect = (idx) => {
     setSelected(idx);
     // TODO: validate answer, calculate points based on timer, advance to next
+    if (idx === question.answerIndex) {
+      setScore(10);
+    }
   };
   const handleNext = () => {
-    setCurrent(current + 1);
+    if (current < reactQuestions.length - 1) {
+      setCurrent(current + 1);
+      setSelected(null);
+    }
   };
 
   return (
@@ -38,6 +45,7 @@ export default function QuizGame({ onClose }) {
         <div className="flex justify-center">
           <Timer key={current} />
         </div>
+        <ScoreBoard score={score} setScore={setScore} />
       </div>
     </section>
   );
