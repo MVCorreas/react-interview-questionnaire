@@ -3,35 +3,38 @@ import { useState } from "react";
 import { reactQuestions } from "../lib/questions";
 import Card from "./Card";
 import Timer from "./Timer";
-import Button from "./Button";
 import ScoreBoard from "./ScoreBoard";
+import FeedbackMessage from "./FeedbackMessage";
 
 export default function QuizGame({ onClose }) {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   const question = reactQuestions[current];
 
   const handleSelect = (idx) => {
-    if (current === reactQuestions.length - 1) {
-      return;
-    }
+    if (showFeedback) return;
 
-    if (idx === question.answerIndex) {
+    setSelected(idx);
+    const correct = idx === question.answerIndex;
+    setIsCorrect(correct);
+
+    if (correct) {
       setScore(score + 10);
     }
 
-    if (current < reactQuestions.length - 1) {
-      setCurrent(current + 1);
-      setSelected(null);
-    }
+    setShowFeedback(true);
   };
 
   const handleNext = () => {
     if (current < reactQuestions.length - 1) {
       setCurrent(current + 1);
       setSelected(null);
+      setShowFeedback(false);
+      setIsCorrect(false);
     }
   };
 
@@ -43,25 +46,30 @@ export default function QuizGame({ onClose }) {
         </button>
       </div>
       <div className="space-y-6">
-        {current < reactQuestions.length - 1 ? (
+        {current < reactQuestions.length ? (
           <>
             <Card
               question={question}
               selected={selected}
               onSelect={handleSelect}
-              disabled={current === reactQuestions.length - 1}
+              disabled={showFeedback}
             />
 
-            <Button
-              className="mb-2"
-              onClick={handleNext}
-              disabled={current === 2 ? true : false}
-              text={"NEXT"}
-            />
+            {showFeedback && (
+              <FeedbackMessage
+                handleNext={handleNext}
+                showFeedback={showFeedback}
+                isCorrect={isCorrect}
+                question={question}
+              />
+            )}
 
-            <div className="flex justify-center">
-              <Timer key={current} />
-            </div>
+            {!showFeedback && (
+              <div className="flex justify-center">
+                <Timer key={current} />
+              </div>
+            )}
+
             <ScoreBoard score={score} setScore={setScore} />
           </>
         ) : (
