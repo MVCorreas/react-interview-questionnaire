@@ -31,11 +31,11 @@ body {
 }
 
 .animated_check_circle {
-  stroke: green;
+  stroke: #008000;
 }
 
 .animated_cross_circle {
-  stroke: red;
+  stroke: #ff0000;
 }
 
 .animated_check_circle .path,

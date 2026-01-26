@@ -26,9 +26,9 @@ export default function FeedbackMessage({
 
         <div className="text-center">
           <p
-            className={`mt-2 ${isCorrect ? "text-green-600" : "text-red-600"}`}
+            className={`mt-2 ${isCorrect ? "text-[#008000]" : "text-[#ff0000]"}`}
           >
-            {question.id}
+            {question.feedback}
           </p>
         </div>
 

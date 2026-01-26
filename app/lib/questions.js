@@ -4,6 +4,8 @@ export const reactQuestions = [
     prompt: "What does JSX stand for?",
     options: ["Javascript Syntax Extension", "JSON Xpress", "Javascript XML"],
     answerIndex: 2,
+    feedback:
+      "JSX allows developers to write code that looks similar to HTML within JavaScript files.",
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ export const reactQuestions = [
       "Nothing, both have same uses",
     ],
     answerIndex: 0,
+    feedback:
+      "React fragments don't create extra DOM nodes like divs do. While a div becomes a real HTML element in the DOM tree, fragments are just a JSX grouping mechanism that disappears during rendering, leaving only their children in the final DOM.",
   },
   {
     id: 3,
@@ -24,6 +28,8 @@ export const reactQuestions = [
       "Props are read-only and always create prop drilling",
     ],
     answerIndex: 1,
+    feedback:
+      "State is internal and mutable. Props are passed from parent to child for reusability and are read-only. Prop Drilling can be avoided using other types of state management like Context API or Redux.",
   },
   {
     id: 4,
