@@ -56,7 +56,6 @@ export default function QuizGame({ onClose = () => {} }: QuizGameProps) {
               question={question}
               selected={selected}
               onSelect={handleSelect}
-              disabled={showFeedback}
             />
 
             {showFeedback && (

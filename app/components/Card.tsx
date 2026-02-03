@@ -1,4 +1,6 @@
-export default function Card({ question, onSelect, selected }) {
+import { CardProps } from "../types";
+
+export default function Card({question, onSelect , selected }: CardProps) {
   const { prompt, options } = question;
   return (
     <div className="mx-auto w-full max-w-2xl">
