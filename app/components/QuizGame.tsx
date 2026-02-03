@@ -39,6 +39,9 @@ export default function QuizGame({ onClose = () => {} }: QuizGameProps) {
       setSelected(null);
       setShowFeedback(false);
       setIsCorrect(false);
+    } else {
+      // Move to completion state
+      setCurrent(reactQuestions.length);
     }
   };
 

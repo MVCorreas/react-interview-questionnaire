@@ -20,7 +20,7 @@ export default function Timer() {
       <div className="timer-wrapper">
         <CountdownCircleTimer
           isPlaying
-          duration={10}
+          duration={20}
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[10, 6, 3, 0]}
           onComplete={() => ({ shouldRepeat: true, delay: 1 })}
