@@ -1,4 +1,6 @@
-const CheckIcon = ({ className }) => (
+import { IconProps } from "@/app/types";
+
+const CheckIcon = ({ className }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 100 100"
@@ -11,7 +13,7 @@ const CheckIcon = ({ className }) => (
   </svg>
 );
 
-const CrossIcon = ({ className }) => (
+const CrossIcon = ({ className }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 100 100"

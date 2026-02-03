@@ -2,13 +2,14 @@
 
 import { CheckIcon, CrossIcon } from "../../public/FeedbackIcons";
 import Button from "./Button";
+import { FeedbackMessageProps } from "../types";
 
 export default function FeedbackMessage({
   handleNext,
   showFeedback,
   isCorrect,
   question,
-}) {
+}: FeedbackMessageProps) {
   return (
     <div data-test="feedback-message" className="my-8">
       <div className="flex flex-col items-center space-y-4">
