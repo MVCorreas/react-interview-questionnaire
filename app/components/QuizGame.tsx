@@ -6,16 +6,20 @@ import Timer from "./Timer";
 import ScoreBoard from "./ScoreBoard";
 import FeedbackMessage from "./FeedbackMessage";
 
-export default function QuizGame({ onClose }) {
-  const [current, setCurrent] = useState(0);
-  const [selected, setSelected] = useState(null);
-  const [score, setScore] = useState(0);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+interface QuizGameProps {
+  onClose?: () => void;
+}
+
+export default function QuizGame({ onClose = () => {} }: QuizGameProps) {
+  const [current, setCurrent] = useState<number>(0);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [score, setScore] = useState<number>(0);
+  const [showFeedback, setShowFeedback] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
   const question = reactQuestions[current];
 
-  const handleSelect = (idx) => {
+  const handleSelect = (idx: number) => {
     if (showFeedback) return;
 
     setSelected(idx);
@@ -70,7 +74,7 @@ export default function QuizGame({ onClose }) {
               </div>
             )}
 
-            <ScoreBoard score={score} setScore={setScore} />
+            <ScoreBoard score={score} />
           </>
         ) : (
           <div className="text-center p-4 bg-green-100 rounded-lg">
