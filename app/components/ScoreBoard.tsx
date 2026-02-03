@@ -1,4 +1,6 @@
-export default function ScoreBoard({ score }) {
+import { ScoreBoardProps } from "../types";
+
+export default function ScoreBoard({ score }: ScoreBoardProps) {
   return (
     <div className=" w-full bg-gray-200 rounded-full h-4">
       <div
